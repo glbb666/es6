@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/1.js"],"names":["console","log","item"],"mappings":";;AAAAA,OAAO,CAACC,GAAR,CAAY,aAAZ;;AACA,WAAAC,IAAI;AAAA,SAAEA,IAAI,GAAC,CAAP;AAAA,CAAJ","sourcesContent":["console.log('hello,world'); \r\nitem=>item+1"],"file":"1.js"}

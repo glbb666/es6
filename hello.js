@@ -1,2 +1,2 @@
 console.log('hello,world'); 
-item=>item+1
+console.log((item=>item+1)(2))
