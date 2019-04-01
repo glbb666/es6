@@ -8,7 +8,14 @@
 </head>
 <body>
 </body>
+<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+<script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
+<script type="module">
+    import './Greeter.js';
+</script>
 <!-- 除了引用外部 ES6 脚本，也可以直接在网页中放置 ES6 代码。 -->
+
 <script type="module">
    class Calc {
     constructor() {
@@ -22,6 +29,7 @@
   var c = new Calc();
   console.log(c.add(4,5));
 </script>
+<!-- 想对Traceur的行为进行精确控制 -->
 <script>
     //Create the System object
     window.System = new traceur.runtime.BrowserTraceurLoader();
@@ -33,8 +41,29 @@
         }
     }
     //Load your module
-    System.import('./1.js',{metadata:metadata}).catch(function(ex){
+    System.import('./hello.js',{metadata:metadata}).catch(function(ex){
         console.error('Import failed',ex.stack||ex);
     })
+</script>
+<!-- Traceur在线转换 -->
+<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+<script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
+<script>
+$traceurRuntime.ModuleStore.getAnonymousModule(function() {
+  "use strict";
+
+  var Calc = function Calc() {
+    console.log('Calc constructor');
+  };
+
+  ($traceurRuntime.createClass)(Calc, {add: function(a, b) {
+    return a + b;
+  }}, {});
+
+  var c = new Calc();
+  console.log(c.add(4, 5));
+  return {};
+});
 </script>
 </html>

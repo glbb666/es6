@@ -1,1 +1,2 @@
-# ddsadas
+# babel和traceur的差别
+babel会自动使用严格模式
