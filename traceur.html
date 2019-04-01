@@ -22,4 +22,19 @@
   var c = new Calc();
   console.log(c.add(4,5));
 </script>
+<script>
+    //Create the System object
+    window.System = new traceur.runtime.BrowserTraceurLoader();
+    //set some experimental options
+    var metadata = {
+        traceurOptions:{
+            experimental:true,
+            properTailCalls:true,
+        }
+    }
+    //Load your module
+    System.import('./1.js',{metadata:metadata}).catch(function(ex){
+        console.error('Import failed',ex.stack||ex);
+    })
+</script>
 </html>
