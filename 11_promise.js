@@ -67,13 +67,17 @@
 // });
 let thenable = {
   then: function(resolve, reject) {
-    resolve(42);
+    console.log(p1);
+    setTimeout(()=>{
+      resolve(42);
+      console.log(p1);
+    },6000)
   }
 };
-
 let p1 = Promise.resolve(thenable);
-console.log(p1);
-p1.then(function(value) {
-  console.log(value);  // 42
-});
+
+// p1.then(function(value) {
+//   console.log(value);  // 42
+// });
+
 
