@@ -21,21 +21,59 @@
 // }).catch(function(reason){
 //   // ...
 // });
-const p1 = new Promise(function (resolve, reject) {
-  setTimeout(() => reject(new Error('fail')), 3000)
-})
+// const p1 = new Promise(function (resolve, reject) {
+//   setTimeout(() => reject(new Error('fail')), 3000)
+// })
  
-const p2 = new Promise(function (resolve, reject) {
-  setTimeout(() => resolve(p1), 1000)
-})
+// const p2 = new Promise(function (resolve, reject) {
+//   setTimeout(() => resolve(p1), 1000)
+// })
 
-p2
-  .then(result => {
-console.log("成功");
-console.log("p2:",p2);
-console.log("p1:",result)})
-  .catch(error =>{ 
-console.log("失败");
-console.log("p2",p2);
-console.log("p1",p1);
+// p2
+//   .then(result => {
+// console.log("成功");
+// console.log("p2:",p2);
+// console.log("p1:",result)})
+//   .catch(error =>{ 
+// console.log("失败");
+// console.log("p2",p2);
+// console.log("p1",p1);
+// });
+// var obj = 'kk'
+// var a = Promise.resolve(obj);
+// console.log(a);
+// var obj  = {name:'kk'}
+// obj.then = function(resolve){
+//   console.log(a);
+//   //resolve();
+//   console.log(a);
+// }
+// const a = Promise.resolve(obj);
+// a.then(()=>{
+//   console.log('ok');
+//   console.log(a);
+// })
+// const promise = new Promise(function(resolve, reject){
+//   setTimeout(() => {
+//     console.log("resolve还没开始:",promise);
+//   }, 5000)
+//   setTimeout(() => {
+//     resolve('ok');
+//     console.log("resolve刚刚结束:",promise);
+//   }, 6000)
+// });//ok
+// promise.then(result=>{
+//   console.log(result)
+// });
+let thenable = {
+  then: function(resolve, reject) {
+    resolve(42);
+  }
+};
+
+let p1 = Promise.resolve(thenable);
+console.log(p1);
+p1.then(function(value) {
+  console.log(value);  // 42
 });
+
